@@ -1,0 +1,55 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <title>Manipulation de Liste avec jQuery</title> 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+    <style> 
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            margin-top: 50px; 
+        } 
+        input[type="text"] { 
+            padding: 5px; 
+            margin-right: 10px; 
+        } 
+        button { 
+            padding: 5px 10px; 
+        } 
+        ul { 
+            list-style-type: none; 
+            padding: 0; 
+        } 
+        li { 
+            margin: 5px; 
+            cursor: pointer; 
+            padding: 5px; 
+            background-color: #f0f0f0; 
+        } 
+    </style> 
+</head> 
+<body> 
+    <h1>Manipulation de Liste avec jQuery</h1> 
+    <input type="text" id="nouvelElement" placeholder="Nouvel élément"> 
+    <button id="ajouter">Ajouter</button> 
+    <p style="color: red;">" pour supprimer un element from list cliquer deux foix sur l'element "</p>
+    <ul id="maListe"> 
+    </ul> 
+    <script>
+        $(document).ready(function() {
+            $('#ajouter').click(function() {
+                var nouvelElement = $('#nouvelElement').val();
+                if (nouvelElement !== '') {
+                    $('#maListe').append('<li>' + nouvelElement + '</li>');
+                    $('#nouvelElement').val('');
+                }
+            });
+
+            $('#maListe').on('dblclick', 'li', function() {
+                $(this).remove();
+            });
+        });
+    </script> 
+</body> 
+</html>
